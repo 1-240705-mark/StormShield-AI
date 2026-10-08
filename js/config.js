@@ -8,8 +8,8 @@
 // ═══════════════════════════════════════════════════════
 
 export const CONFIG = {
-  SUPABASE_URL: "YOUR_SUPABASE_URL_HERE",
-  SUPABASE_ANON_KEY: "YOUR_SUPABASE_ANON_KEY_HERE",
+  SUPABASE_URL: "https://hatqwgmtzgrbxfswiibi.supabase.co/rest/v1/",
+  SUPABASE_ANON_KEY: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhhdHF3Z210emdyYnhmc3dpaWJpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTE0NzY1NjMsImV4cCI6MjEwNzA1MjU2M30.LTFspc2zaideoRd_a92RI7GMYWcwHLGhPzfQKe4fBgg",
 
   APP_NAME: "StormShield AI",
   APP_VERSION: "0.1.0",
