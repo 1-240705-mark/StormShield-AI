@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="StormShield AI — AI-powered emergency response and disaster risk reduction platform." />
+  <title>StormShield AI — Emergency Response Platform</title>
+
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/nav.css" />
+  <link rel="stylesheet" href="css/auth.css" />
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="ss-nav">
+    <div class="ss-nav-inner">
+      <a href="index.html" class="ss-brand">
+        <span class="ss-brand-icon">🌪️</span>
+        <span class="ss-brand-name">StormShield AI</span>
+      </a>
+      <div class="ss-nav-user">
+        <span style="font-size: 0.8rem; color: var(--ss-text-dim);">
+          City of Santa Rosa, Laguna
+        </span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <main class="ss-hero">
+
+    <section class="ss-hero-left">
+      <h1>
+        When disaster strikes,<br />
+        <span class="accent">every second saves lives.</span>
+      </h1>
+      <p class="tagline">
+        StormShield AI is an AI-powered emergency response platform for
+        disaster risk reduction — real-time alerts, SOS reporting,
+        evacuation routing, and intelligent damage assessment,
+        all in one place.
+      </p>
+
+      <ul class="ss-feature-list">
+        <li><span>🌊</span> Flood prediction alerts</li>
+        <li><span>🧭</span> Safe evacuation routes</li>
+        <li><span>🤖</span> AI emergency chatbot</li>
+        <li><span>📸</span> AI damage reporting</li>
+        <li><span>🆘</span> One-tap SOS button</li>
+        <li><span>🏢</span> Real-time center locator</li>
+      </ul>
+    </section>
+
+    <section class="ss-auth-card">
+      <div class="ss-auth-tabs">
+        <button class="ss-auth-tab active" data-tab="login">Login</button>
+        <button class="ss-auth-tab" data-tab="signup">Sign Up</button>
+      </div>
+
+      <!-- LOGIN -->
+      <form id="login-form" class="ss-auth-form">
+        <div class="ss-field">
+          <label for="login-email">Email</label>
+          <input id="login-email" type="email" placeholder="you@example.com" required />
+        </div>
+        <div class="ss-field">
+          <label for="login-password">Password</label>
+          <input id="login-password" type="password" placeholder="••••••••" required />
+        </div>
+        <button type="submit" class="btn btn-primary ss-auth-submit">Sign In</button>
+      </form>
+
+      <!-- SIGNUP -->
+      <form id="signup-form" class="ss-auth-form hidden">
+        <div class="ss-field">
+          <label for="signup-name">Full Name</label>
+          <input id="signup-name" type="text" placeholder="Juan Dela Cruz" required />
+        </div>
+        <div class="ss-field">
+          <label for="signup-email">Email</label>
+          <input id="signup-email" type="email" placeholder="you@example.com" required />
+        </div>
+        <div class="ss-field">
+          <label for="signup-password">Password</label>
+          <input id="signup-password" type="password" placeholder="Min. 8 characters" minlength="8" required />
+        </div>
+        <div class="ss-field">
+          <label>I am a…</label>
+          <div class="ss-role-picker" id="role-picker">
+            <label class="ss-role-option selected">
+              <input type="radio" name="role" value="citizen" checked />
+              👤 Citizen
+            </label>
+            <label class="ss-role-option">
+              <input type="radio" name="role" value="responder" />
+              🚑 Responder
+            </label>
+            <label class="ss-role-option">
+              <input type="radio" name="role" value="admin" />
+              🛡️ Admin
+            </label>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary ss-auth-submit">Create Account</button>
+      </form>
+
+      <div id="auth-message" class="ss-auth-message"></div>
+
+      <p class="ss-auth-footer">
+        By continuing you agree to use StormShield AI responsibly during emergencies.
+      </p>
+    </section>
+  </main>
+
+  <script type="module">
+    const tabs = document.querySelectorAll(".ss-auth-tab");
+    const loginForm = document.getElementById("login-form");
+    const signupForm = document.getElementById("signup-form");
+
+    tabs.forEach((tab) => {
+      tab.addEventListener("click", () => {
+        tabs.forEach((t) => t.classList.remove("active"));
+        tab.classList.add("active");
+        const isLogin = tab.dataset.tab === "login";
+        loginForm.classList.toggle("hidden", !isLogin);
+        signupForm.classList.toggle("hidden", isLogin);
+        document.getElementById("auth-message").classList.remove("error", "success");
+      });
+    });
+
+    document.querySelectorAll(".ss-role-option").forEach((opt) => {
+      opt.addEventListener("click", () => {
+        document.querySelectorAll(".ss-role-option").forEach((o) =>
+          o.classList.remove("selected")
+        );
+        opt.classList.add("selected");
+      });
+    });
+
+    loginForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      showMessage("🔧 Auth is coming in Stage 2. Supabase is not connected yet.", "success");
+    });
+
+    signupForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      showMessage("🔧 Signup is coming in Stage 2. Supabase is not connected yet.", "success");
+    });
+
+    function showMessage(text, type) {
+      const el = document.getElementById("auth-message");
+      el.textContent = text;
+      el.className = "ss-auth-message " + type;
+    }
+  </script>
+</body>
+</html>

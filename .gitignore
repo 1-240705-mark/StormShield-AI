@@ -1,0 +1,28 @@
+# Dependencies
+node_modules/
+
+# Environment / Secrets
+.env
+.env.local
+.env.*.local
+js/config.local.js
+
+# Supabase
+supabase/.temp/
+supabase/.branches/
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor
+.vscode/
+.idea/
+
+# Logs
+*.log
+npm-debug.log*
+
+# Netlify
+.netlify/
